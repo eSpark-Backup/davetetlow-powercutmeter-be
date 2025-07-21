@@ -1,0 +1,78 @@
+{
+  "info": {
+    "name": "Dave Tetlow - Smart Meter",
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-1234567890ef",
+    "description": "Postman collection for registering IoT devices, sending data, and fetching latest info.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register Device",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"device_id\": \"ESP_34:CD:B0:85:8C:AC\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/register-device",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["register-device"]
+        }
+      }
+    },
+    {
+      "name": "Send Device Data",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"device_id\": \"ESP_34:CD:B0:85:8C:AC\",\n  \"data\": {\n    \"cutoff_detection\": true,\n    \"low_battery_indication\": false\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/device-data",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["device-data"]
+        }
+      }
+    },
+    {
+      "name": "Get All Registered Devices",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/devices",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["devices"]
+        }
+      }
+    },
+    {
+      "name": "Get Latest Data for All Devices",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/device-data",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["device-data"]
+        }
+      }
+    }
+  ]
+}
